@@ -23,16 +23,17 @@ public class CollectionTestSuite {
     @Test
     public void testOddNumbersExterminatorEmptyList(){
         //Given
-        int range = 1;                                          // zakres losowanych liczb
         ArrayList<Integer> mainList = new ArrayList<>();
-        Random theGenerator = new Random();
-            for(int n=0; n < 20; n++){
-            mainList.add(theGenerator.nextInt(range)+1);
-            }
+            mainList.add(1);
+            mainList.add(7);
+            // mainList.add(14); wykomentowane w celach testowych
+            // mainList.add(6);
+            mainList.add(23);
+            mainList.add(9);
         OddNumbersExterminator collection = new OddNumbersExterminator();
-          ArrayList<Integer> newList = collection.exterminate(mainList);
 
         //When
+        ArrayList<Integer> newList = collection.exterminate(mainList);
         Integer result = newList.size();
         System.out.println("Collection size = " + result);
         for (Integer display : newList) {
@@ -43,33 +44,34 @@ public class CollectionTestSuite {
         System.out.println("Your collection is empty!");
         }
 
-
     @Test
      public void testOddNumbersExterminatorNormalList(){
         //Given
-        int range = 10;                                          // zakres losowanych liczb
-        ArrayList<Integer> mainList = new ArrayList<>();
-        Random theGenerator = new Random();
-        for(int n=0; n < 20; n++){
-            mainList.add(theGenerator.nextInt(range)+1);
-        }
+          ArrayList<Integer> mainList = new ArrayList<>();
+            mainList.add(1);
+            mainList.add(7);
+            mainList.add(14);
+            mainList.add(6);
+            mainList.add(23);
+            mainList.add(9);
         OddNumbersExterminator collection = new OddNumbersExterminator();
-        collection.exterminate(mainList);
 
         //When
-        Integer result = mainList.size();
+        ArrayList<Integer> newList = collection.exterminate(mainList);
+        newList.add(3); //dodane do kolekcji po metodzie exterminate
+        newList.add(5); //dodane do kolekcji po metodzie exterminate
+        Integer result = newList.size();
         ArrayList<Integer> oddList = new ArrayList<>();
-        System.out.println("Collection size = " + result);
         for (Integer n=0; n < result; n++ ) {
-            Integer calculate = mainList.get(n);
-            System.out.println(n);
+            Integer calculate = newList.get(n);
             Integer rest =  calculate % 2;
             if(rest != 0) {
-                oddList.add(n);
+            oddList.add(n);
             }
         }
         //Then
         Assert.assertFalse(oddList.size() == 0);
         System.out.println("Your method doesn't work. There are odd numbers in your collection!!!");
+        System.out.println("Number of odd numbers in collection = " + oddList.size());
      }
 }
