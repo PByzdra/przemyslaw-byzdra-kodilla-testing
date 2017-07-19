@@ -32,11 +32,12 @@ public class CollectionTestSuite {
             mainList.add(9);
         OddNumbersExterminator collection = new OddNumbersExterminator();
 
+
         //When
-        ArrayList<Integer> newList = collection.exterminate(mainList);
-        Integer result = newList.size();
+        ArrayList<Integer> resultList = collection.exterminate(mainList);
+        Integer result = resultList.size();
         System.out.println("Collection size = " + result);
-        for (Integer display : newList) {
+        for (Integer display : resultList) {
             System.out.println(display);
         }
         //Then
@@ -56,22 +57,18 @@ public class CollectionTestSuite {
             mainList.add(9);
         OddNumbersExterminator collection = new OddNumbersExterminator();
 
+        List<Integer> comparatorList = new ArrayList<>();
+        comparatorList.add(14);
+        comparatorList.add(6);
+        comparatorList.add(3);
+        comparatorList.add(5);
+
         //When
-        ArrayList<Integer> newList = collection.exterminate(mainList);
-        newList.add(3); //dodane do kolekcji po metodzie exterminate
-        newList.add(5); //dodane do kolekcji po metodzie exterminate
-        Integer result = newList.size();
-        ArrayList<Integer> oddList = new ArrayList<>();
-        for (Integer n=0; n < result; n++ ) {
-            Integer calculate = newList.get(n);
-            Integer rest =  calculate % 2;
-            if(rest != 0) {
-            oddList.add(n);
-            }
-        }
+        ArrayList<Integer> resultList = collection.exterminate(mainList);
+        resultList.add(3); //dodane do kolekcji po metodzie exterminate
+        resultList.add(5); //dodane do kolekcji po metodzie exterminate
+
         //Then
-        Assert.assertFalse(oddList.size() == 0);
-        System.out.println("Your method doesn't work. There are odd numbers in your collection!!!");
-        System.out.println("Number of odd numbers in collection = " + oddList.size());
+        Assert.assertEquals(resultList, comparatorList);
      }
 }
