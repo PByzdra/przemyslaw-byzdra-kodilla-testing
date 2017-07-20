@@ -101,9 +101,9 @@ public class ShapeCollectorTestSuite {
     public void showFigures() {
         //Given
 
-        Shape circle = new Circle("Circle-1", 5);
-        Shape square = new Square("Square-1", 5, 10);
-        Shape triangle = new Triangle("Triangle-1", 5, 10);
+        Shape circle = new Circle("Circle-1 ", 5);
+        Shape square = new Square("Square-1 ", 5, 10);
+        Shape triangle = new Triangle("Triangle-1 ", 5, 10);
         ShapeCollector shapeCollector = new ShapeCollector();
 
         shapeCollector.addFigure(circle); //#0 in collection
@@ -116,7 +116,9 @@ public class ShapeCollectorTestSuite {
 
         //Then
 
-        //Assert??????????
+        Assert.assertEquals("Circle{name='Circle-1 ', radius=5.0}" +
+                "Square{name='Square-1 ', a=5.0, b=10.0}" +
+                "Triangle{name='Triangle-1 ', a=5.0, h=10.0}", shapeCollector.showFigures());
 
     }
 }

@@ -18,11 +18,14 @@ public class ShapeCollector  {
     public Shape getFigure(int n){
         return this.shapes.get(n);
     }
-    public Shape showFigures(){
+    public String showFigures(){
+        StringBuilder figures = new StringBuilder();
          for(Shape figure: shapes) {
-             System.out.println("Name of figure: " + figure.getFigureName() + " Figure area: " + figure.getField());
+             figures.append(figure);
          }
-        return null;
+        System.out.println(figures.toString());
+         return figures.toString();
     }
+
 }
 
