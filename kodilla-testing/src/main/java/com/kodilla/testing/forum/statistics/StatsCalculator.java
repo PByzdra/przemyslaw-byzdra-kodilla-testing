@@ -24,16 +24,29 @@ public class StatsCalculator {
     }
 
     public double getAvgPostsPerUser() {
-        return numberOfPosts / numberOfUsers;
+        if (numberOfUsers == 0) {
+            return 0;
+        } else {
+            return numberOfPosts / numberOfUsers;
+        }
     }
 
+
     public double getAvgCommentsPerUser() {
-        return numberOfComments / numberOfUsers;
+        if (numberOfUsers == 0) {
+            return 0;
+        } else {
+            return numberOfComments / numberOfUsers;
+        }
     }
 
     public double getAvgCommentsPerPost() {
 
-        return numberOfComments /numberOfPosts;
+        if (numberOfPosts == 0) {
+            return 0;
+        } else {
+            return numberOfComments/ numberOfPosts;
+        }
     }
 
     public void calculateAdvStatistics() {
