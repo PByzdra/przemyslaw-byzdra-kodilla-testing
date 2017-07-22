@@ -32,7 +32,8 @@ public class StatsCalculator {
     }
 
     public double getAvgCommentsPerPost() {
-        return numberOfComments / numberOfPosts;
+
+        return numberOfComments /numberOfPosts;
     }
 
     public void calculateAdvStatistics() {
