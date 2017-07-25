@@ -1,6 +1,8 @@
 package com.kodilla.testing.forum.statistics;
 
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
