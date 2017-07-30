@@ -66,7 +66,7 @@ public class BookDirectoryTestSuite {
 
         assertEquals(0, theListOfBooks0.size());
         assertEquals(15, theListOfBooks15.size());
-        assertEquals(40, theListOfBooks40.size());
+        assertEquals(0, theListOfBooks40.size());
     }
 
        @Test
@@ -97,7 +97,7 @@ public class BookDirectoryTestSuite {
                 .thenReturn(resultListOf0Books);
 
         // When
-        List<Book> theListOfBooks0 = bookLibrary.listBooksWithCondition(libraryUser1.getPeselId());
+          List<Book> theListOfBooks0 = bookLibrary.listBooksInHandsOf(libraryUser1);
 
         // Then
 
@@ -110,13 +110,15 @@ public class BookDirectoryTestSuite {
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         LibraryUser libraryUser1 = new LibraryUser("John", "MacKenzie","782653223" );
-        List<Book> resultListOf1Book = generateListOfNBooks(1);
+           List<Book> resultListOf1Book = new ArrayList<Book>();
+               Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
+               resultListOf1Book.add(book1);
 
         when(libraryDatabaseMock.listBooksInHandsOf(libraryUser1))
                 .thenReturn(resultListOf1Book);
 
         // When
-        List<Book> theListOfBooks1 = bookLibrary.listBooksWithCondition(libraryUser1.getPeselId());
+        List<Book> theListOfBooks1 = bookLibrary.listBooksInHandsOf(libraryUser1);
 
         // Then
 
@@ -134,7 +136,8 @@ public class BookDirectoryTestSuite {
                 .thenReturn(resultListOf5Books);
 
         // When
-        List<Book> theListOfBooks5 = bookLibrary.listBooksWithCondition(libraryUser1.getPeselId());
+           List<Book> theListOfBooks5 = bookLibrary.listBooksInHandsOf(libraryUser1);
+
 
         // Then
 
